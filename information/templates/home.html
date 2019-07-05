@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Playfair+Display:400,700" rel="stylesheet">
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href='{%static "css/bootstrap.css"%}'>
+    <link rel="stylesheet" href='{%static "css/animate.css"%}'>
+    <link rel="stylesheet" href='{%static "css/owl.carousel.min.css"%}'>
+    <link rel="stylesheet" href='{%static "css/aos.css"%}'>
+    
+    <link rel="stylesheet" href='{%static "fonts/ionicons/css/ionicons.min.css"%}'>
+    <link rel="stylesheet" href='{%static "fonts/fontawesome/css/font-awesome.min.css"%}'>
+    <style>
+        @font-face { font-family: 'locus_sangsang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/locus_sangsang.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+        *{
+            background-color : #F2F2F2;
+        }
+    </style>
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href='{%static "css/style.css"%}'>
+  </head>
+  <body>  
+    <section class="section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center">
+            <span style = "font-family: 'yg-jalnan'; font-size:45px; color:black; background-color : #21A68D" >Fresh Can</span>
+          </div>
+        </div>
+        <div class="js-carousel-1 owl-carousel">
+
+          <div class="testimonial text-center" style="background-color:#F2EFBB; width:1096; height:356">
+            <div class="author-image mb-3" style="background-color:#F2EFBB; width:1096; height:356">
+              <!--<span style = "font-family: 'locus_sangsang'; color:black; font-size:40px; background-color : #96D9CC">fresh Can</span>-->
+              <p style = "font-family: 'locus_sangsang'; color:black; font-size:40px; background-color : #96D9CC">fresh Can</p>
+            </div>
+              <p style = "font-family: 'locus_sangsang'; color:black; font-size:40px; background-color : #96D9CC">식재료 장기 보관 방법</p>  
+          </div>
+
+          <div class="testimonial text-center" style="background-color:#F2EFBB;">
+            <div class="author-image mb-3" style="background-color:#F2EFBB;">
+              <span style = "font-family: 'locus_sangsang'; background-color:orange; font-size:30px; color:black;">이 달의 과일</span>
+              <img src='{%static "img/watermelon.jpg"%}' alt="Image placeholder" class="rounded-circle" style="background-color:#F2EFBB; width:175px ;height:175px;">
+            </div>
+              <blockquote>
+              <h3 style = "font-family: 'locus_sangsang'; background-color:#F2EFBB;">수박</h3>
+            </blockquote>
+          </div>
+
+          <div class="testimonial text-center" style="background-color:#F2EFBB;">
+            <div class="author-image mb-3" style="background-color:#F2EFBB;">
+              <span style = "font-family: 'locus_sangsang'; background-color:orange; font-size:30px; color:black;">이 달의 과일</span>
+              <img src='{%static "img/omelon.jpg"%}' alt="Image placeholder" class="rounded-circle" style="background-color:#F2EFBB; width:175px ;height:175px;">
+            </div>
+              <blockquote>
+              <h3 style = "font-family: 'locus_sangsang'; background-color:#F2EFBB;">참외</h3>
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </section>
+<div style = "text-align:center;">
+<button type="button" class="btn btn-info" onclick="location.href='{% url 'grain' %}'">곡물/견과류</button>
+<button type="button" class="btn btn-info" onclick="location.href='{% url 'vegetable' %}'">채소</button>
+<button type="button" class="btn btn-info" onclick="location.href='{% url 'fruit' %}'">과일</button>
+<button type="button" class="btn btn-info" onclick="location.href='{% url 'seafood' %}'">해산물</button>
+<button type="button" class="btn btn-info" onclick="location.href='{% url 'meat' %}'">육류/기타</button>
+<button type="button" class="btn btn-info" onclick="location.href='{% url 'fshow'%}'">나만의 보관</button>
+        </div>
+      </div>
+
+
+    
+    <script src='{%static "js/jquery-3.2.1.min.js"%}'></script>
+    <script src='{%static "js/popper.min.js"%}'></script>
+    <script src='{%static "js/bootstrap.min.js"%}'></script>
+    <script src='{%static "js/owl.carousel.min.js"%}'></script>
+    <script src='{%static "js/jquery.waypoints.min.js"%}'></script>
+    <script src='{%static "js/aos.js"%}'></script>
+    <script src='{%static "js/main.js"%}'></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>rpost</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<style>
+    @font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+    @font-face { font-family: 'Atomy-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Atomy-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+    h1 {margin: 20px;
+        padding: 15px;
+        background-color: #21A68D;
+        color: white;
+        text-align: center;
+        font-family: 'yg-jalnan';}
+    
+</style>
+
+<body style="background-color:#96D9CC">
+<h1>나만의 보관</h1>
+<div class='container'>
+    <form method = 'POST'>
+        {% csrf_token %}
+        <table>
+        <div>
+           <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">카테고리</span>
+            <!--{{form.title}}-->
+                <select name = "title" require id = "id_title">
+                    <option value selected>선택</option>
+                    <option value="01">곡물/견과류</option>
+                    <option value="02">채소</option>
+                    <option value="03">과일</option>
+                    <option value="04">해산물</option>
+                    <option value="05">육류/기타</option>
+                <select>
+        </div>
+        <br>
+
+        <div class="name">
+           <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">무엇?</span>
+           <!--{{form.name}}-->
+                <input type="text" name="name" maxlength="300" required id = "id_name" style="width:200px; height:25px;" >
+        </div>
+        <br>
+
+        <div class="body">
+           <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">나만의 보관</span>
+           <br>
+           <br>
+            <!--{{form.body}}-->
+                <textarea name="body" cols="137" rows="20" required id="id_body"></textarea>
+        <div>
+
+        </table>
+        <br>
+        <input class = "btn btn-primary" type = "submit" value="저장">
+        <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'fshow' %}'">취소</button>
+    </form>
+</div>
+</body>

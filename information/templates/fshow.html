@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+   <title>tip</title>
+   <script type="text/javascript">
+    function show_layer(div_name) {
+
+        document.all.div_01.style.display="none";
+        document.all.div_02.style.display="none";
+        document.all.div_03.style.display="none";
+        document.all.div_04.style.display="none";
+        document.all.div_05.style.display="none";
+
+        switch(div_name)
+        {
+            case'1':
+            document.all.div_01.style.display="";
+            break;
+            case'2':
+            document.all.div_02.style.display="";
+            break;
+            case'3':
+            document.all.div_03.style.display="";
+            break;
+            case'4':
+            document.all.div_04.style.display="";
+            break;
+            case'5':
+            document.all.div_05.style.display="";
+            break;
+
+        }
+
+    }
+</script>
+
+<style type="text/css">
+    @font-face { font-family: 'yg-jalnan'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff'); font-weight: normal; font-style: normal; }
+    @font-face { font-family: 'Atomy-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/Atomy-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+    .a{
+        display: inline-block;
+        padding: 20px;
+    }
+    h1{
+        margin: 20px;
+        padding: 15px;
+        background-color: #21A68D;
+        color: white;
+        text-align: center;
+        font-family: 'yg-jalnan';
+    }
+    .nav-link{
+        background-color: #B2D996;
+        color: white;
+        font-family: 'Atomy-Bold';
+
+    }
+
+    *{
+        background-color: #96D9CC;
+    }
+    button{
+        font-family: 'Atomy-Bold';
+        background-color: white;
+
+    }
+    span{
+        padding-right: 30px;
+        } 
+    
+</style>
+</head>
+<body style="background-color: #96D9CC;">
+    <h1>나만의 보관</h1>
+    
+    <span style="float: right; margin-right:5px;"><button type="button" class="btn btn-primary" onclick="location.href='{% url 'home' %}'">홈</button></span>
+    <span style="float: right"><button type="button" class="btn btn-primary" onclick="location.href='{% url 'fpost' %}'">작성</button></span>
+
+    <br><br>
+
+    <!-------------------------------->
+    <DIV id=div_01 >
+        <ul class="nav nav-tabs justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="javascript:show_layer('1');">곡물/견과류</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:show_layer('2');">채소</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:show_layer('3');">과일</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:show_layer('4');">해산물</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="javascript:show_layer('5');">육류/기타</a>
+        </li>
+    </ul>
+
+
+    <table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+     <tr><td  colspan=4 align=center style='padding-top:20px;'></td></tr>
+     <hr>
+
+ </table>
+ {%for information in informations.all%}
+ {%if information.title == '01'%}
+ <div class = "container" style = "background-color:white">
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">무엇?</span> 
+    <strong style="font-size:18px; background-color:white;">{{information.name}}</strong>
+    <br>
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">나만의 보관</span>
+    <br>
+    <br>
+    <strong style="font-size:18px; background-color:white;">{{information.body|linebreaksbr}}</strong>
+    <br>
+    <br>
+    <button type = "button" class="btn btn-primary" onclick="location.href='{% url 'edit' pk=information.pk %}'">수정</button>
+    <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=information.pk %}'">삭제</button>
+    <br>
+    <br>
+</div>
+<br>
+{%endif%}
+{%endfor%}
+
+</DIV>
+
+
+
+<!--------------------------------------------->
+
+<DIV id=div_02 style="DISPLAY: none">
+
+    <ul class="nav nav-tabs justify-content-center">
+
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('1');">곡물/견과류</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link active" href="javascript:show_layer('2');">채소</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('3');">과일</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('4');">해산물</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('5');">육류/기타</a>
+    </li>
+</ul>
+
+
+
+<table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+    <tr><td  colspan=4 align=center style='padding-top:20px;'></td></tr>
+    <hr>
+</table>
+{%for information in informations.all%}
+{%if information.title == '02'%}
+<div class = "container" style = "background-color:white">
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">무엇?</span> 
+    <strong style="font-size:18px; background-color:white;">{{information.name}}</strong>
+    <br>
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">나만의 보관</span>
+    <br>
+    <br>
+    <strong style="font-size:18px; background-color:white;">{{information.body|linebreaksbr}}</strong>
+    <br>
+    <br>
+    <button type = "button" class="btn btn-primary" onclick="location.href='{% url 'edit' pk=information.pk %}'">수정</button>
+    <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=information.pk %}'">삭제</button>
+    <br>
+    <br>
+</div>
+<br>
+{%endif%}
+{%endfor%}
+
+</DIV>
+
+
+
+<!----------------------------------->
+
+<DIV id=div_03 style="DISPLAY: none">
+
+    <ul class="nav nav-tabs justify-content-center">
+
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('1');">곡물/견과류</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link " href="javascript:show_layer('2');">채소</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="javascript:show_layer('3');">과일</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('4');">해산물</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('5');">육류/기타</a>
+    </li>
+</ul>
+
+<table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+
+
+    <tr><td  colspan=4 align=center style='padding-top:20px;'></td></tr>
+    <hr>
+</table>
+{%for information in informations.all%}
+{% if information.title == '03'%}
+<div class = "container" style = "background-color:white">
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">무엇?</span> 
+    <strong style="font-size:18px; background-color:white;">{{information.name}}</strong>
+    <br>
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">나만의 보관</span>
+    <br>
+    <br>
+    <strong style="font-size:18px; background-color:white;">{{information.body|linebreaksbr}}</strong>
+    <br>
+    <br>
+    <button type = "button" class="btn btn-primary" onclick="location.href='{% url 'edit' pk=information.pk %}'">수정</button>
+    <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=information.pk %}'">삭제</button>
+    <br>
+    <br>
+</div>
+<br>
+{%endif%}
+{%endfor%}
+
+</DIV>
+
+
+
+<!------------------------------------>
+
+<DIV id=div_04 style="DISPLAY: none">
+
+    <ul class="nav nav-tabs justify-content-center">
+
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('1');">곡물/견과류</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link " href="javascript:show_layer('2');">채소</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('3');">과일</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="javascript:show_layer('4');">해산물</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('5');">육류/기타</a>
+    </li>
+</ul>
+<table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+
+
+    <tr><td  colspan=4 align=center style='padding-top:20px;'></td></tr>
+    <hr>
+</table>
+{%for information in informations.all%}
+{%if information.title == '04'%}
+<div class = "container" style = "background-color:white">
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">무엇?</span> 
+    <strong style="font-size:18px; background-color:white;">{{information.name}}</strong>
+    <br>
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">나만의 보관</span>
+    <br>
+    <br>
+    <strong style="font-size:18px; background-color:white;">{{information.body|linebreaksbr}}</strong>
+    <br>
+    <br>
+    <button type = "button" class="btn btn-primary" onclick="location.href='{% url 'edit' pk=information.pk %}'">수정</button>
+    <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=information.pk %}'">삭제</button>
+    <br>
+    <br>
+</div>
+<br>
+{%endif%}
+{%endfor%}
+</DIV>
+<!------------------------------------------>
+<DIV id=div_05 style="DISPLAY: none">
+
+    <ul class="nav nav-tabs justify-content-center">
+
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('1');">곡물/견과류</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link " href="javascript:show_layer('2');">채소</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('3');">과일</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:show_layer('4');">해산물</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="javascript:show_layer('5');">육류/기타</a>
+    </li>
+</ul>
+
+<table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+
+
+    <tr><td  colspan=4 align=center style='padding-top:20px;'></td></tr>
+    <hr>
+</table>
+{%for information in informations.all%}
+{%if information.title == '05'%}
+ <div class = "container" style = "background-color:white">
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">무엇?</span> 
+    <strong style="font-size:18px; background-color:white;">{{information.name}}</strong>
+    <br>
+    <br>
+    <span style="font-family:Atomy-Bold; background-color : #B2D996; margin:10px; padding:5px; width:120px; height:40px; font-size:20px;">나만의 보관</span>
+    <br>
+    <br>
+    <strong style="font-size:18px; background-color:white;">{{information.body|linebreaksbr}}</strong>
+    <br>
+    <br>
+    <button type = "button" class="btn btn-primary" onclick="location.href='{% url 'edit' pk=information.pk %}'">수정</button>
+    <button type = "button" class="btn btn-danger" onclick="location.href='{% url 'delete' pk=information.pk %}'">삭제</button>
+    <br>
+    <br>
+</div>
+<br>
+{%endif%}
+{%endfor%}
+
+</DIV>
+
+</body>
+</html>
